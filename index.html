@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Calculator app</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="/script.js"></script>
+  </head>
+
+  <body class="theme-change">
+    <main role="main" class="main">
+      <div class="calc-body theme-change">
+        <div class="calc-header" role="header">
+          <div class="heading">
+            <p class="head-p theme-change">calc</p>
+          </div>
+          <div class="selector">
+            <div class="span-div">
+              <span class="selector-span theme-change">THEME</span>
+            </div>
+            <div class="switch">
+              <div class="button-field">
+                <button class="theme-button theme-change" data-theme="1">
+                  1
+                </button>
+                <button class="theme-button theme-change" data-theme="2">
+                  2
+                </button>
+                <button class="theme-button theme-change" data-theme="3">
+                  3
+                </button>
+              </div>
+              <button class="theme-indicator theme-change"></button>
+              <div class="switch-field theme-change"></div>
+            </div>
+          </div>
+        </div>
+        <div class="calc-input">
+          <input
+            type="text"
+            id="display"
+            class="display theme-change"
+            disabled
+          />
+        </div>
+        <div class="buttons theme-change">
+          <button class="number button theme-change" data-num="7">7</button>
+          <button class="number button theme-change" data-num="8">8</button>
+          <button class="number button theme-change" data-num="9">9</button>
+          <button class="delete button theme-change" data-delete="DEL">
+            DEL
+          </button>
+          <button class="number button theme-change" data-num="4">4</button>
+          <button class="number button theme-change" data-num="5">5</button>
+          <button class="number button theme-change" data-num="6">6</button>
+          <button class="operator button theme-change" data-op="+">+</button>
+          <button class="number button theme-change" data-num="1">1</button>
+          <button class="number button theme-change" data-num="2">2</button>
+          <button class="number button theme-change" data-num="3">3</button>
+          <button class="operator button theme-change" data-op="-">-</button>
+          <button class="decimal button theme-change" data-decimal=".">
+            .
+          </button>
+          <button class="number button theme-change" data-num="0">0</button>
+          <button class="operator button theme-change" data-op="/">/</button>
+          <button class="operator button theme-change" data-op="*">*</button>
+          <button class="clear button theme-change" data-clear="RESET">
+            RESET
+          </button>
+          <button class="equals button theme-change" data-equals="=">=</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://www.github.com/Aikaykalu17">Aikay Kalu Amogu</a>.
+      </div>
+    </footer>
+  </body>
+</html>
