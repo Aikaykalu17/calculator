@@ -45,7 +45,6 @@ const calcFunction = function () {
         operator = value;
         currentNumber = '';
         display.value += `${value}`;
-        console.log(value);
       } else if (button.classList.contains('equals')) {
         if (currentNumber === '' || previousNumber === '') return;
         let result = calculate(previousNumber, currentNumber, operator);
@@ -70,8 +69,8 @@ const calcFunction = function () {
             currentNumber = '0.';
             display.value += currentNumber;
           } else {
-            currentNumber += '.';
-            display.value = currentNumber;
+            currentNumber = '.';
+            display.value += currentNumber;
           }
         }
       }
