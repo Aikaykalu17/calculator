@@ -14,11 +14,77 @@ const formatNumber = function (num) {
 
 // Calculate and display function
 
+// const calcFunction = function () {
+//   let currentNumber = '';
+//   let previousNumber = '';
+//   let operator = '';
+//   let result = '';
+
+//   buttons.forEach(button => {
+//     button.addEventListener('click', function (e) {
+//       e.preventDefault();
+//       let value = button.textContent;
+//       if (button.classList.contains('number')) {
+//         if (display.value === '' && previousNumber !== '') return;
+//         if (result !== '') {
+//           display.value = '';
+//           currentNumber = '';
+//           previousNumber = '';
+//           operator = '';
+//           result = '';
+//         }
+//         currentNumber += value;
+//         display.value += value;
+//       } else if (button.classList.contains('operator')) {
+//         if (currentNumber === '' && result !== '') {
+//           currentNumber = result;
+//           result = '';
+//         }
+//         if (currentNumber === '') return;
+//         previousNumber = currentNumber;
+//         operator = value;
+//         currentNumber = '';
+//         display.value += `${value}`;
+//       } else if (button.classList.contains('equals')) {
+//         if (currentNumber === '' || previousNumber === '') return;
+//         let result = calculate(previousNumber, currentNumber, operator);
+//         display.value = formatNumber(result.toString());
+//         previousNumber = '';
+//         currentNumber = result.toString();
+//         operator = '';
+//       } else if (button.classList.contains('clear')) {
+//         display.value = '';
+//         currentNumber = '';
+//         previousNumber = '';
+//         operator = '';
+//         result = '';
+//       } else if (button.classList.contains('delete')) {
+//         display.value = display.value.slice(0, -1);
+//         if (currentNumber !== '') {
+//           currentNumber = currentNumber.slice(0, -1);
+//         }
+//       } else if (button.classList.contains('decimal')) {
+//         if (!currentNumber.includes('.')) {
+//           if (currentNumber === '') {
+//             currentNumber = '0.';
+//             display.value += currentNumber;
+//           } else {
+//             currentNumber = '.';
+//             display.value += currentNumber;
+//           }
+//         }
+//       }
+//     });
+//   });
+// };
+// calcFunction();
+
 const calcFunction = function () {
   let currentNumber = '';
   let previousNumber = '';
   let operator = '';
   let result = '';
+  let isResult = false;
 
   buttons.forEach(button => {
     button.addEventListener('click', function (e) {
@@ -26,16 +92,16 @@ const calcFunction = function () {
       let value = button.textContent;
       if (button.classList.contains('number')) {
         if (display.value === '' && previousNumber !== '') return;
-        if (result !== '') {
-          display.value = '';
-          currentNumber = '';
-          previousNumber = '';
-          operator = '';
-          result = '';
+        if (isResult) {
+          display.value = value;
+          currentNumber = value;
+          isResult = false;
+        } else {
+          currentNumber += value;
+          display.value += value;
         }
-        currentNumber += value;
-        display.value += value;
       } else if (button.classList.contains('operator')) {
+        isResult = false;
         if (currentNumber === '' && result !== '') {
           currentNumber = result;
           result = '';
@@ -45,6 +111,7 @@ const calcFunction = function () {
         operator = value;
         currentNumber = '';
         display.value += `${value}`;
+        isResult = false;
       } else if (button.classList.contains('equals')) {
         if (currentNumber === '' || previousNumber === '') return;
         let result = calculate(previousNumber, currentNumber, operator);
@@ -52,26 +119,27 @@ const calcFunction = function () {
         previousNumber = '';
         currentNumber = result.toString();
         operator = '';
+        isResult = true;
       } else if (button.classList.contains('clear')) {
         display.value = '';
         currentNumber = '';
         previousNumber = '';
         operator = '';
         result = '';
+        isResult = false;
       } else if (button.classList.contains('delete')) {
         display.value = display.value.slice(0, -1);
         if (currentNumber !== '') {
           currentNumber = currentNumber.slice(0, -1);
         }
       } else if (button.classList.contains('decimal')) {
-        if (!currentNumber.includes('.')) {
-          if (currentNumber === '') {
-            currentNumber = '0.';
-            display.value += currentNumber;
-          } else {
-            currentNumber = '.';
-            display.value += currentNumber;
-          }
+        if (isResult) {
+          display.value = '0.';
+          currentNumber = '0.';
+          isResult = true;
+        } else if (!currentNumber.includes('.')) {
+          currentNumber += '.';
+          display.value += '.';
         }
       }
     });
